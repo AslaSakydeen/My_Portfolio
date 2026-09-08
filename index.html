@@ -243,22 +243,60 @@ html.js-reveal .reveal.in { opacity: 1; transform: translateY(0); }
 .project-link { font-size: 0.9rem; text-decoration: none; margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; }
 
 /* Timeline */
-.timeline { position: relative; padding-left: 36px; }
-.timeline::before { content: ""; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 1px; background: var(--panel-border); }
-.tl-item { position: relative; padding-bottom: 34px; }
-.tl-item:last-child { padding-bottom: 0; }
-.tl-dot {
-  position: absolute; left: -36px; top: 4px; width: 16px; height: 16px; border-radius: 50%;
-  background: #020D08; border: 2px solid var(--cyan); box-shadow: 0 0 12px rgba(31,157,108,0.5);
+/* Horizontal Education Timeline */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding-top: 36px;
 }
-.tl-item.is-placeholder .tl-dot { border-color: var(--amber); box-shadow: 0 0 12px rgba(201,146,47,0.5); }
-.tl-item h4 { font-size: 1.02rem; margin: 0 0 4px; font-weight: 600; }
-.tl-meta { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); display: block; margin-bottom: 8px; }
-.tl-item p { font-size: 0.92rem; margin: 0; }
-.placeholder-note { font-size: 0.8rem; color: var(--amber); margin-top: 8px; font-style: italic; }
-.track-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.track-col h3 { font-size: 1.05rem; margin-bottom: 24px; color: var(--ink); }
 
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 8px;
+  height: 1px;
+  background: var(--panel-border);
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 0;
+}
+
+.tl-dot {
+  position: absolute;
+  left: 0;
+  top: -36px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #020D08;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 12px rgba(31,157,108,0.5);
+}
+
+.tl-item h4 {
+  font-size: 1.02rem;
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.tl-item p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.tl-meta {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
 /* Contact */
 .contact-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; }
 .contact-info { padding: 32px; }
@@ -313,6 +351,28 @@ html.js-reveal .reveal.in { opacity: 1; transform: translateY(0); }
   .hero { padding: 80px 20px 60px; }
   .section { padding: 64px 20px; }
   .skills-grid, .project-grid, .fact-grid { grid-template-columns: 1fr; }
+  .timeline {
+  grid-template-columns: 1fr;
+  gap: 34px;
+  padding-top: 36px;
+}
+
+.timeline::before {
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  height: auto;
+}
+
+.tl-item {
+  padding-left: 36px;
+}
+
+.tl-dot {
+  left: -36px;
+  top: 0;
+}
 }
 </style>
 </head>
@@ -470,45 +530,44 @@ html.js-reveal .reveal.in { opacity: 1; transform: translateY(0); }
   </section>
 
   <section class="section" id="education">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="eyebrow">04 — Journey</span>
-        <h2 class="section-title">Education</h2>
-      </div>
-      <div class="track-cols">
-        <div class="track-col reveal">
-          <h3>Education</h3>
-          <div class="timeline">
-            <div class="tl-item">
-              <span class="tl-dot"></span>
-              <h4>HND in Information Technology</h4>
-              <span class="tl-meta">SLIATE · ATI, Kurunegala</span>
-              <p>Year 2, Semester 2 - final academic semester, followed by a 6-month industrial internship.</p>
-            </div>
-          </div>
-            <div class="timeline">
-            <div class="tl-item">
-              <span class="tl-dot"></span>
-              <h4>G.C.E. Advanced Level (A/L)</h4>
-              <p>Completed</p>
-            </div>
-            </div>
-            <div class="timeline">
-             <div class="tl-item">
-              <span class="tl-dot"></span>
-              <h4>G.C.E. Advanced Level (O/L)</h4>
-              <p>Completed</p>
-            </div>
-            </div>
+  <div class="section-inner">
 
-          </div>
-        </div>
-        
-        
-       
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Journey</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- HND -->
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <h4>HND in Information Technology</h4>
+        <span class="tl-meta">SLIATE · ATI, Kurunegala</span>
+        <p>
+          Year 2, Semester 2 — Final academic semester,
+          followed by a 6-month industrial internship.
+        </p>
       </div>
-    
-  </section>
+
+      <!-- A/L -->
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <h4>G.C.E. Advanced Level</h4>
+        <p>Completed</p>
+      </div>
+
+      <!-- O/L -->
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <h4>G.C.E. Ordinary Level</h4>
+        <p>Completed</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
   <section class="section" id="contact">
     <div class="section-inner">
